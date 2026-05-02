@@ -1,0 +1,36 @@
+STOCK MARKET/
+├── client/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── AboutPage.tsx
+│   │   │   ├── AnalyzePage.tsx
+│   │   │   ├── LoginPage.tsx
+│   │   │   ├── NotFoundPage.tsx
+│   │   │   ├── PortfolioPage.tsx
+│   │   │   ├── SignupPage.tsx
+│   │   │   └── WatchlistPage.tsx
+│   │   ├── analysis.ts
+│   │   ├── App.tsx
+│   │   ├── auth.ts
+│   │   ├── AuthProvider.tsx
+│   │   ├── index.css
+│   │   ├── main.tsx
+│   │   ├── portfolio.ts
+│   │   ├── PriceChart.tsx
+│   │   ├── RequireAuth.tsx
+│   │   └── vite-env.d.ts
+│   └── index.html
+├── data/
+│   └── users.json
+├── dist\client/
+│   ├── assets/
+│   │   ├── index-BrhHfLHD.js
+│   │   └── index-CYUyR0Ef.css
+│   └── index.html
+├── node_modules/
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── server.js
+├── tsconfig.json
+└── vite.config.ts
