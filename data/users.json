@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id": "4819cd82-d8a5-40ed-b2e5-83450278c794",
+      "email": "rajguptarishi1@gmail.com",
+      "passwordHash": "$2b$10$bwDFBb9NGmu0C4BajA2tYeGsBP200HlQc8UouaqCMa.Nvvf20O3K.",
+      "createdAt": "2026-05-02T17:11:21.927Z"
+    }
+  ]
+}
