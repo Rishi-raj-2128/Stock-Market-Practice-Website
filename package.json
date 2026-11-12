@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server.js --dev",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

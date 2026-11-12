@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
+import { NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import {
   analyzeCandles,
   type Analysis,
@@ -43,6 +43,7 @@ interface HistoryResponse {
 
 export function App() {
   const { user, logout } = useAuth()
+  const location = useLocation()
   const [tickerInput, setTickerInput] = useState('RELIANCE')
   const [exchange, setExchange] = useState<'NSE' | 'BSE'>('NSE')
   const [range, setRange] = useState<'1y' | '2y' | '5y' | '10y' | 'max'>('5y')
@@ -280,8 +281,9 @@ export function App() {
         </p>
       </section>
 
+      <div key={location.pathname} className="page-transition">
       <Routes>
-        <Route index element={<Navigate to="/analyze" replace />} />
+        <Route index element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route
@@ -355,6 +357,7 @@ export function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      </div>
 
       <footer className="muted small" style={{ marginTop: '2rem' }}>
         Price history is aggregated from Yahoo Finance-style market data for education only; it can be incomplete or delayed. Not financial advice.
