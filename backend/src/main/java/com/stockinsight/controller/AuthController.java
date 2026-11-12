@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
 import java.util.Map;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -56,14 +57,14 @@ public class AuthController {
     @GetMapping("/me")
     public ResponseEntity<?> me(HttpServletRequest request) {
         String token = cookieToken(request);
-        if (token == null) return ResponseEntity.ok(Map.of("user", (Object) null));
+        if (token == null) return ResponseEntity.ok(Collections.singletonMap("user", null));
         try {
             Claims claims = jwtService.parse(token);
             return users.findById(claims.getSubject())
                     .<ResponseEntity<?>>map(user -> ResponseEntity.ok(Map.of("user", authService.safeUser(user))))
-                    .orElseGet(() -> ResponseEntity.ok(Map.of("user", (Object) null)));
+                    .orElseGet(() -> ResponseEntity.ok(Collections.singletonMap("user", null)));
         } catch (RuntimeException ex) {
-            return ResponseEntity.ok(Map.of("user", (Object) null));
+            return ResponseEntity.ok(Collections.singletonMap("user", null));
         }
     }
 
