@@ -76,9 +76,16 @@ public class HistoryController {
             if (candles.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No market data found for this ticker.");
             JsonNode meta = result.path("meta");
             String vendorSymbol = meta.path("symbol").asText(normalized).split("-")[0];
-            return Map.of("symbol", normalized, "candles", candles, "vendorSymbol", vendorSymbol,
-                    "currency", nullableText(meta.path("currency")), "exchangeName", nullableText(meta.path("exchangeName")),
-                    "timezone", nullableText(meta.path("exchangeTimezoneName")), "range", safeRange, "interval", safeInterval);
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("symbol", normalized);
+            payload.put("candles", candles);
+            payload.put("vendorSymbol", vendorSymbol);
+            payload.put("currency", nullableText(meta.path("currency")));
+            payload.put("exchangeName", nullableText(meta.path("exchangeName")));
+            payload.put("timezone", nullableText(meta.path("exchangeTimezoneName")));
+            payload.put("range", safeRange);
+            payload.put("interval", safeInterval);
+            return payload;
         } catch (ResponseStatusException ex) {
             throw ex;
         } catch (Exception ex) {
