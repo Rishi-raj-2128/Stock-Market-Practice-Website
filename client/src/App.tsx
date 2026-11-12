@@ -281,7 +281,7 @@ export function App() {
       </section>
 
       <Routes>
-        <Route index element={<Navigate to="/analyze" replace />} />
+        <Route index element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route
